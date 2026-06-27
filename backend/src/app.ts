@@ -8,9 +8,9 @@ import notificationRoutes from "./routes/notification.route";
 const app = express();
 
 // Middlewares
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: "*" }));
 
 // Health Check
 app.get("/", (_req, res) => {

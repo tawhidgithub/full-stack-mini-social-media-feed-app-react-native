@@ -1,55 +1,222 @@
----
+# Mini Social Feed - Backend
 
-# 🖥️ BACKEND README (Node.js / Express)
+A RESTful backend API for the Mini Social Feed application built with **Node.js**, **Express**, **TypeScript**, and **MongoDB**.
 
-```md
-# Mini Social Feed Backend 🚀
-
-Backend API for a social feed app built with **Node.js, Express, TypeScript, MongoDB**, and **Expo Push Notifications**.
-
----
-
-## 🚀 Features
-
-- 🔐 JWT Authentication
-- 🔒 Password hashing with bcrypt
-- 📝 Posts CRUD
-- ❤️ Like / Unlike system
-- 💬 Comment system
-- 🔍 Search posts by username
-- 📜 Pagination API
-- 🔔 Push notifications (Expo SDK)
-- 🧠 Mongoose population for relational data
-
----
-
-## 🧰 Tech Stack
+## Tech Stack
 
 - Node.js
 - Express.js
 - TypeScript
-- MongoDB + Mongoose
+- MongoDB
+- Mongoose
 - JWT Authentication
-- Expo Server SDK (Push Notifications)
+- bcryptjs
+- Expo Push Notifications
+- Firebase Cloud Messaging (FCM V1)
 
 ---
 
-## 📦 Installation
+## Features
+
+- User Registration
+- User Login (JWT Authentication)
+- Password Hashing with bcrypt
+- Create Posts
+- Get Feed with Pagination
+- Search Posts by Username
+- Like / Unlike Posts
+- Add Comments
+- Push Notifications (Likes & Comments)
+- Protected Routes
+
+---
+
+## Installation
+
+### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/mini-social-feed-backend.git
+git clone <your-backend-repository-url>
 cd backend
+```
+
+### Install dependencies
+
+```bash
 npm install
 ```
 
+### Create a `.env` file
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
+
+### Start the development server
+
 ```bash
-▶️ Run Server
 npm run dev
 ```
 
-🔐 Environment Variables
+Server runs on:
 
-PORT=5000
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
-EXPO_ACCESS_TOKEN=your_expo_token
+```
+http://localhost:5000
+```
+
+---
+
+# API Endpoints
+
+## Authentication
+
+### Register
+
+```
+POST /api/auth/signup
+```
+
+Body
+
+```json
+{
+  "username": "john",
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+---
+
+### Login
+
+```
+POST /api/auth/login
+```
+
+Body
+
+```json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+Returns JWT Token.
+
+---
+
+## Posts
+
+### Get Posts
+
+```
+GET /api/posts
+```
+
+Supports:
+
+```
+?page=1
+&limit=10
+&username=john
+```
+
+---
+
+### Create Post
+
+```
+POST /api/posts
+```
+
+Authorization
+
+```
+Bearer Token
+```
+
+Body
+
+```json
+{
+  "content": "Hello World!"
+}
+```
+
+---
+
+## Like
+
+```
+POST /api/posts/:id/like
+```
+
+Authorization Required.
+
+---
+
+## Comments
+
+### Get Comments
+
+```
+GET /api/posts/:id/comments
+```
+
+---
+
+### Add Comment
+
+```
+POST /api/posts/:id/comments
+```
+
+Authorization Required.
+
+Body
+
+```json
+{
+  "text": "Nice post!"
+}
+```
+
+---
+
+## Push Notifications
+
+The backend sends push notifications using:
+
+- Expo Push API
+- Firebase Cloud Messaging (FCM V1)
+
+Notifications are sent when:
+
+- Someone likes your post
+- Someone comments on your post
+
+---
+
+## Project Structure
+
+```
+src
+├── controllers
+├── middleware
+├── model
+├── routes
+├── services
+├── utils
+├── config
+└── index.ts
+```
+
+---
+
+## Author
+
+Tawhidul Islam
