@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "462412951978",
+    "project_id": "mini-social-media-app-rn",
+    "storage_bucket": "mini-social-media-app-rn.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462412951978:android:8459b00fbb4bdb180afbd3",
+        "android_client_info": {
+          "package_name": "com.tawhid69.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFPuWgtwskzeq86rhCq8OhSUaWOlZYvic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
